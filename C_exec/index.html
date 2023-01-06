@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"embnao.cf","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="二维数组的玩法二维数组的玩法_将二维数组中每个一维数组中的最大值与相应一维数组的最后一位进行交换123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172#include &lt;stdi">
+<meta property="og:type" content="website">
+<meta property="og:title" content="C语言练习题">
+<meta property="og:url" content="http://embnao.cf/C_exec/index.html">
+<meta property="og:site_name" content="EmbNao">
+<meta property="og:description" content="二维数组的玩法二维数组的玩法_将二维数组中每个一维数组中的最大值与相应一维数组的最后一位进行交换123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172#include &lt;stdi">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-07-22T16:37:08.000Z">
+<meta property="article:modified_time" content="2023-01-06T18:14:27.396Z">
+<meta property="article:author" content="EmbNao">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://embnao.cf/C_exec/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>C语言练习题 | EmbNao
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">EmbNao</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-c_exec">
+
+    <a href="/C_exec/" rel="section"><i class="fa fa-code fa-fw"></i>C练习题</a>
+
+  </li>
+        <li class="menu-item menu-item-note">
+
+    <a href="/note" rel="section"><i class=" fa-fw"></i>note</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">C语言练习题
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <h1 id="二维数组的玩法"><a href="#二维数组的玩法" class="headerlink" title="二维数组的玩法"></a>二维数组的玩法</h1><h2 id="二维数组的玩法-将二维数组中每个一维数组中的最大值与相应一维数组的最后一位进行交换"><a href="#二维数组的玩法-将二维数组中每个一维数组中的最大值与相应一维数组的最后一位进行交换" class="headerlink" title="二维数组的玩法_将二维数组中每个一维数组中的最大值与相应一维数组的最后一位进行交换"></a>二维数组的玩法_将二维数组中每个一维数组中的最大值与相应一维数组的最后一位进行交换</h2><pre><code><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> M 3</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 4</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">cre</span><span class="params">(<span class="type">int</span> arr[][N], <span class="type">int</span> arr_hang, <span class="type">int</span> arr_lie)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	srand(getpid());</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; arr_hang; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; arr_lie; j++)</span><br><span class="line">			arr[i][j] = rand() % <span class="number">100</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">pri</span><span class="params">(<span class="type">int</span> arr[][N], <span class="type">int</span> arr_hang, <span class="type">int</span> arr_lie)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; arr_hang; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; arr_lie; j++)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;%2d &quot;</span>, arr[i][j]);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">cmp_1</span><span class="params">(<span class="type">int</span> arr[][N], <span class="type">int</span> arr_hang, <span class="type">int</span> arr_lie)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">	<span class="type">int</span> max = <span class="number">0</span>, temp = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; arr_hang; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		max = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; arr_lie; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			max = arr[i][max] &gt; arr[i][j] ? max : j;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(max != j - <span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			temp = arr[i][max];</span><br><span class="line">			arr[i][max] = arr[i][j - <span class="number">1</span>];</span><br><span class="line">			arr[i][j - <span class="number">1</span>] = temp;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> arr[M][N] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="type">int</span> arr_hang = <span class="keyword">sizeof</span>(arr) / <span class="keyword">sizeof</span>(arr[<span class="number">0</span>]);</span><br><span class="line">	<span class="type">int</span> arr_lie = <span class="keyword">sizeof</span>(arr[<span class="number">0</span>]) / <span class="keyword">sizeof</span>(arr[<span class="number">0</span>][<span class="number">0</span>]);</span><br><span class="line">	<span class="type">int</span> arr_num = <span class="keyword">sizeof</span>(arr) / <span class="keyword">sizeof</span>(arr[<span class="number">0</span>][<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;arr_hang = %d, arr_lie = %d, arr_num = %d\n&quot;</span>, arr_hang, arr_lie, arr_num);</span><br><span class="line"></span><br><span class="line">	cre(arr, arr_hang, arr_lie);</span><br><span class="line">	pri(arr, arr_hang, arr_lie);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;************分割线1************\n&quot;</span>);</span><br><span class="line">	cmp_1(arr, arr_hang, arr_lie);</span><br><span class="line">	pri(arr, arr_hang, arr_lie);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;************分割线2************\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h1 id="将10进制数转换为二进制数"><a href="#将10进制数转换为二进制数" class="headerlink" title="将10进制数转换为二进制数"></a>将10进制数转换为二进制数</h1><pre><code><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">itob</span><span class="params">(<span class="type">int</span> In, <span class="type">int</span> arr[<span class="number">8</span>])</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">itob</span><span class="params">(<span class="type">int</span> In, <span class="type">int</span> arr[<span class="number">8</span>])</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">do</span></span><br><span class="line">	&#123;</span><br><span class="line">		arr[i] = In % <span class="number">2</span>;</span><br><span class="line">		In = In / <span class="number">2</span>;</span><br><span class="line">		i++;</span><br><span class="line">		j++;</span><br><span class="line">	&#125;<span class="keyword">while</span>(In != <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">for</span>(j = i - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span> (<span class="string">&quot;%d&quot;</span>,arr[j]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span> <span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> In = <span class="number">0</span>;</span><br><span class="line">	<span class="type">int</span> arr[<span class="number">8</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="built_in">scanf</span> (<span class="string">&quot;%d&quot;</span>,&amp;In);</span><br><span class="line"></span><br><span class="line">	itob(In, arr);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h1 id="输出素数"><a href="#输出素数" class="headerlink" title="输出素数"></a>输出素数</h1><h2 id="例程1-输出1-1000内所有的素数"><a href="#例程1-输出1-1000内所有的素数" class="headerlink" title="例程1-输出1-1000内所有的素数"></a>例程1-输出1-1000内所有的素数</h2><pre><code><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span> <span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">2</span>; i &lt; <span class="number">1000</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(j = <span class="number">2</span>; j &lt; i; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(i % j == <span class="number">0</span>)</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(i == j)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,i);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h2 id="例程2-输出最小值与最大值之间所有的素数"><a href="#例程2-输出最小值与最大值之间所有的素数" class="headerlink" title="例程2-输出最小值与最大值之间所有的素数"></a>例程2-输出最小值与最大值之间所有的素数</h2><pre><code><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span> <span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">	<span class="type">int</span> In1 = <span class="number">0</span>, In2 = <span class="number">0</span>;</span><br><span class="line">	<span class="type">int</span> min = <span class="number">0</span>, max = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">scanf</span> (<span class="string">&quot;%d%d&quot;</span>,&amp;In1,&amp;In2);</span><br><span class="line"></span><br><span class="line">	min = In1 &lt; In2 ? In1 : In2;</span><br><span class="line">	max = In1 &gt; In2 ? In1 : In2;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(i = min; i &lt; max; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(j = <span class="number">2</span>; j &lt; i; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(i % j == <span class="number">0</span>)</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(i == j)</span><br><span class="line">			<span class="built_in">printf</span> (<span class="string">&quot;%d\n&quot;</span>,i);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h1 id="重新实现-strcpy-strcat-strcmp-strlen"><a href="#重新实现-strcpy-strcat-strcmp-strlen" class="headerlink" title="重新实现 strcpy strcat strcmp strlen"></a>重新实现 <code>strcpy</code> <code>strcat</code> <code>strcmp</code> <code>strlen</code></h1><pre><code><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">char</span> *<span class="title function_">mystrcpy</span><span class="params">(<span class="type">char</span> *a, <span class="type">const</span> <span class="type">char</span> *b)</span>;</span><br><span class="line"><span class="type">size_t</span> <span class="title function_">mystrcmp</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *a, <span class="type">const</span> <span class="type">char</span> *b)</span>;</span><br><span class="line"><span class="type">char</span> *<span class="title function_">mystrcat</span><span class="params">(<span class="type">char</span> *a, <span class="type">const</span> <span class="type">char</span> *b)</span>;</span><br><span class="line"><span class="type">size_t</span> <span class="title function_">mystrlen</span><span class="params">(<span class="type">char</span> *a)</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span> <span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">char</span> a[<span class="number">10</span>] = <span class="string">&quot;good&quot;</span>;</span><br><span class="line">	<span class="type">char</span> *b = <span class="string">&quot;nice&quot;</span>;</span><br><span class="line">	<span class="comment">//printf (&quot;%s\n&quot;,a);</span></span><br><span class="line">	<span class="comment">//printf (&quot;%s\n&quot;,b);</span></span><br><span class="line">	<span class="comment">//mystrcpy(a,b);	</span></span><br><span class="line">	<span class="comment">//printf (&quot;%s\n&quot;,a);</span></span><br><span class="line">	<span class="comment">//printf (&quot;%s\n&quot;,strcat(a,b));</span></span><br><span class="line">	<span class="built_in">printf</span> (<span class="string">&quot;%ld\n&quot;</span>,mystrcmp(a,b));</span><br><span class="line">	<span class="comment">//printf (&quot;%ld\n&quot;,strlen(a));</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">size_t</span> <span class="title function_">mystrlen</span><span class="params">(<span class="type">char</span> *a)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; a[i] != <span class="string">&#x27;\0&#x27;</span>; i++);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">size_t</span> <span class="title function_">mystrcmp</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *a, <span class="type">const</span> <span class="type">char</span> *b)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; a[i] == b[i] &amp;&amp; a[i] != <span class="string">&#x27;\0&#x27;</span>; i++);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//printf (&quot;%d&quot;,a[i]-b[i]);</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> a[i] - b[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">char</span> *<span class="title function_">mystrcat</span><span class="params">(<span class="type">char</span> *a, <span class="type">const</span> <span class="type">char</span> *b)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; a[i] != <span class="string">&#x27;\0&#x27;</span>; i++);</span><br><span class="line">	<span class="keyword">for</span>(j = <span class="number">0</span>; b[j] != <span class="string">&#x27;\0&#x27;</span>; i++, j++)</span><br><span class="line">		a[i] = b[j];</span><br><span class="line">	a[i] = b[j];</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">char</span> *<span class="title function_">mystrcpy</span><span class="params">(<span class="type">char</span> *a,<span class="type">const</span> <span class="type">char</span> *b)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span>  i = <span class="number">0</span>; </span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; b[i] != <span class="string">&#x27;\0&#x27;</span>; i++)</span><br><span class="line">		a[i] = b[i];</span><br><span class="line">	a[i] = b[i];</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h1 id="函数指针操作实例"><a href="#函数指针操作实例" class="headerlink" title="函数指针操作实例"></a>函数指针操作实例</h1><h2 id="第一种用法"><a href="#第一种用法" class="headerlink" title="第一种用法"></a>第一种用法</h2><pre><code><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="type">void</span> (*pfun)(<span class="type">int</span> data);</span><br><span class="line"><span class="type">void</span> <span class="title function_">myfun</span><span class="params">(<span class="type">int</span> data)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;get data:%d\n&quot;</span>,data);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span> *argv[])</span></span><br><span class="line">&#123;</span><br><span class="line">	pfun = myfun;</span><br><span class="line">	(*pfun)(<span class="number">100</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h2 id="第二种用法"><a href="#第二种用法" class="headerlink" title="第二种用法"></a>第二种用法</h2><pre><code><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">typedef</span> <span class="title function_">void</span> <span class="params">(*pfun)</span><span class="params">(<span class="type">int</span> data)</span>;</span><br><span class="line"><span class="comment">/*typedef的功能是定义新的类型。第一句就是定义了一种 pfun 的类型，并定义这种类型为指向某种函数的指针，这种函数以一个 int 为参数并返回 void 类型。*/</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">myfun</span><span class="params">(<span class="type">int</span> data)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;get data:%d\n&quot;</span>,data);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span> *argv[])</span></span><br><span class="line">&#123;</span><br><span class="line">	pfun p= myfun;      <span class="comment">//函数指针指向执行函数的地址</span></span><br><span class="line">	p(<span class="number">100</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E7%8E%A9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">二维数组的玩法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E7%8E%A9%E6%B3%95-%E5%B0%86%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E6%AF%8F%E4%B8%AA%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC%E4%B8%8E%E7%9B%B8%E5%BA%94%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E4%BD%8D%E8%BF%9B%E8%A1%8C%E4%BA%A4%E6%8D%A2"><span class="nav-number">1.1.</span> <span class="nav-text">二维数组的玩法_将二维数组中每个一维数组中的最大值与相应一维数组的最后一位进行交换</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8610%E8%BF%9B%E5%88%B6%E6%95%B0%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">将10进制数转换为二进制数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E7%B4%A0%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">输出素数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E7%A8%8B1-%E8%BE%93%E5%87%BA1-1000%E5%86%85%E6%89%80%E6%9C%89%E7%9A%84%E7%B4%A0%E6%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text">例程1-输出1-1000内所有的素数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E7%A8%8B2-%E8%BE%93%E5%87%BA%E6%9C%80%E5%B0%8F%E5%80%BC%E4%B8%8E%E6%9C%80%E5%A4%A7%E5%80%BC%E4%B9%8B%E9%97%B4%E6%89%80%E6%9C%89%E7%9A%84%E7%B4%A0%E6%95%B0"><span class="nav-number">3.2.</span> <span class="nav-text">例程2-输出最小值与最大值之间所有的素数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8D%E6%96%B0%E5%AE%9E%E7%8E%B0-strcpy-strcat-strcmp-strlen"><span class="nav-number">4.</span> <span class="nav-text">重新实现 strcpy strcat strcmp strlen</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B"><span class="nav-number">5.</span> <span class="nav-text">函数指针操作实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8D%E7%94%A8%E6%B3%95"><span class="nav-number">5.1.</span> <span class="nav-text">第一种用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8D%E7%94%A8%E6%B3%95"><span class="nav-number">5.2.</span> <span class="nav-text">第二种用法</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">EmbNao</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">EmbNao</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+
+</body>
+</html>
