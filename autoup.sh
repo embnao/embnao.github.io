@@ -1,10 +1,10 @@
 #!/usr/bin/bash
 
-rm -rf /d/share/embnao/teachernote/teachernote.tar.gz
 
-tar -zcvf teachernote.tar.gz /d/share/embnao/teachernote/
 
-git add /d/share/embnao/teachernote.tar.gz
+
+
+git add .
 
 git commit -m "autoup"
 
